@@ -3,9 +3,10 @@ import React from 'react';
 function Result({ filename, imageData }) {
   return (
     <div>
-      <p style={{ backgroundColor: 'rgba(0, 0, 0, 0.60)', padding: '10px' }}>
-        <h1 style={{ textShadow: '2px 2px black' }}>Image uploaded and processed</h1>
+      <p className="processed" style={{ backgroundColor: 'rgba(0, 0, 0, 0.60)' }}>
+        <h1 style={{ textShadow: '2px 2px black', fontSize: '1.5rem' }}>Image processed</h1>
       </p>
+
       <img
         src={`data:image/png;base64,${imageData}`}
         alt="Skeleton"
@@ -15,9 +16,9 @@ function Result({ filename, imageData }) {
         <a
           href={`data:image/png;base64,${imageData}`}
           download={`${filename}-skeleton.png`}
-          style={{ color: 'orange', fontSize: '20px', fontFamily: 'Arial' }}
+          style={{ color: 'orange', fontSize: '1.3rem' }}
         >
-          Download skeleton image
+          Download
         </a>
       </p>
     </div>

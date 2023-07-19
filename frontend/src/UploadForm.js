@@ -3,7 +3,6 @@ import { useDropzone } from 'react-dropzone';
 import Result from './Result';
 
 function UploadForm() {
-  // const [file, setFile] = useState(null); // unused vars
   const [resultData, setResultData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -39,14 +38,12 @@ function UploadForm() {
       <div
         {...getRootProps()}
         style={{
-          fontFamily: 'Creepster',
           border: '1px dashed orange',
-          padding: '40px',
+          padding: '15px',
           color: 'orange',
           backgroundColor: 'black',
         }}
       >
-        <label for="file-upload">Upload an image</label>
         <input {...getInputProps()} id="file-upload" />
 
         {isDragActive ? (
@@ -55,8 +52,33 @@ function UploadForm() {
           <p>Drag 'n' drop some files here, or click to select files</p>
         )}
       </div>
-      {loading && <p>Processing image...</p>}
-      {error && <p>{error}</p>}
+      {loading && (
+        <p
+          style={{
+            textShadow: '2px 2px black',
+            backgroundColor: 'rgba(0, 0, 0, 0.60)',
+            padding: '10px',
+            color: 'orange',
+            fontSize: '1.5rem',
+          }}
+        >
+          Processing image...
+        </p>
+      )}
+      {error && (
+        <p
+          style={{
+            textShadow: '2px 2px black',
+            backgroundColor: 'rgba(0, 0, 0, 0.60)',
+            padding: '10px',
+            color: 'red',
+            fontSize: '2rem',
+            fontWeight: 'bold',
+          }}
+        >
+          {error}
+        </p>
+      )}
       {resultData && <Result filename={resultData.filename} imageData={resultData.imageData} />}
     </div>
   );

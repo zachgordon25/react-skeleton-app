@@ -1,6 +1,7 @@
 body {
   color: orange;
-  font-family: 'Creepster', cursive;
+  font-family: 'IM Fell English SC', serif;
+  font-size: 18px;
   background-image: url('../public/skeletons.jpg');
   background-size: auto;
 }
@@ -13,4 +14,13 @@ body {
   height: 100vh;
   text-align: center;
   margin: 2rem;
+}
+.processed {
+  padding: 0px;
+}
+
+@media (min-width: 600px) {
+  .processed {
+    padding: 10px;
+  }
 }
