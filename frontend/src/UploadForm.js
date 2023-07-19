@@ -34,7 +34,7 @@ function UploadForm() {
         style={{
           fontFamily: 'Creepster',
           border: '1px dashed orange',
-          padding: '20px',
+          padding: '40px',
           color: 'orange',
           backgroundColor: 'black',
         }}
