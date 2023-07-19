@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
+import { useDropzone } from 'react-dropzone';
 import Result from './Result';
 
 function UploadForm() {
-  const [file, setFile] = useState(null);
   const [resultData, setResultData] = useState(null);
 
-  const submitForm = (event) => {
-    event.preventDefault();
-    if (!file) return;
-
+  const onDrop = useCallback((acceptedFiles) => {
+    const file = acceptedFiles[0];
     const formData = new FormData();
     formData.append('file', file);
 
@@ -20,18 +18,29 @@ function UploadForm() {
       .then((data) => {
         setResultData(data);
       });
-  };
+  }, []);
 
-  const onFileChange = (event) => {
-    setFile(event.target.files[0]);
-  };
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
     <div>
-      <form onSubmit={submitForm}>
-        <input type="file" onChange={onFileChange} />
-        <input type="submit" value="Upload" />
-      </form>
+      <div
+        {...getRootProps()}
+        style={{
+          fontFamily: 'Creepster',
+          border: '1px dashed orange',
+          padding: '20px',
+          color: 'orange',
+          backgroundColor: 'black',
+        }}
+      >
+        <input {...getInputProps()} />
+        {isDragActive ? (
+          <p>Drop the files here ...</p>
+        ) : (
+          <p>Drag 'n' drop some files here, or click to select files</p>
+        )}
+      </div>
       {resultData && <Result filename={resultData.filename} imageData={resultData.imageData} />}
     </div>
   );
