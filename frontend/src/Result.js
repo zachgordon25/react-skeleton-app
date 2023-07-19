@@ -9,9 +9,15 @@ function Result({ filename, imageData }) {
         alt="Skeleton"
         style={{ maxWidth: '80%', maxHeight: '80%', objectFit: 'contain' }}
       />
-      <a href={`data:image/png;base64,${imageData}`} download={`${filename}-skeleton.png`}>
-        Download skeleton image
-      </a>
+      <p style={{ backgroundColor: 'rgba(0, 0, 0, 0.60)', padding: '10px' }}>
+        <a
+          href={`data:image/png;base64,${imageData}`}
+          download={`${filename}-skeleton.png`}
+          style={{ color: 'orange', fontSize: '20px', fontFamily: 'Arial' }}
+        >
+          Download skeleton image
+        </a>
+      </p>
     </div>
   );
 }
