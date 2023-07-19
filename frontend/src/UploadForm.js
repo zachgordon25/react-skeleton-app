@@ -6,6 +6,7 @@ function UploadForm() {
   // const [file, setFile] = useState(null); // unused vars
   const [resultData, setResultData] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const onDrop = useCallback((acceptedFiles) => {
     const file = acceptedFiles[0];
@@ -13,6 +14,7 @@ function UploadForm() {
     formData.append('file', file);
 
     setLoading(true); // Set loading to true when the image is uploaded
+    setError(null); // Clear any previous errors
 
     fetch('http://localhost:5000/upload', {
       method: 'POST',
@@ -22,6 +24,11 @@ function UploadForm() {
       .then((data) => {
         setResultData(data);
         setLoading(false); // Set loading to false when the image is received
+      })
+      .catch((error) => {
+        setError('An error occurred while processing the image. Please try again.');
+        setResultData(null); // Clear any previously uploaded image
+        setLoading(false);
       });
   }, []);
 
@@ -39,7 +46,9 @@ function UploadForm() {
           backgroundColor: 'black',
         }}
       >
-        <input {...getInputProps()} />
+        <label for="file-upload">Upload an image</label>
+        <input {...getInputProps()} id="file-upload" />
+
         {isDragActive ? (
           <p>Drop the files here ...</p>
         ) : (
@@ -47,6 +56,7 @@ function UploadForm() {
         )}
       </div>
       {loading && <p>Processing image...</p>}
+      {error && <p>{error}</p>}
       {resultData && <Result filename={resultData.filename} imageData={resultData.imageData} />}
     </div>
   );
