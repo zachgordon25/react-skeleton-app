@@ -1,7 +1,9 @@
 body {
-  background-color: black;
+  /* background-color: black; */
   color: orange;
   font-family: 'Creepster', cursive;
+  background-image: url('../public/skeletons.jpg');
+  background-size: auto;
 }
 
 .App {
@@ -10,7 +12,7 @@ body {
   flex-direction: row; */
 }
 
-button {
+/* button {
   background-color: orange;
   border: none;
   color: black;
@@ -32,7 +34,7 @@ button:hover {
 .container {
   display: flex;
   flex-direction: row;
-}
+} */
 
 /* @media (max-width: 600px) {
   .App {
