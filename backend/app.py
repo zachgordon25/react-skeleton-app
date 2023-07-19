@@ -9,7 +9,7 @@ from skeleton.extractKimiaEDF import generate_skeleton
 
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
 
 
 def get_pixel_coordinates(image, scale_x, scale_y):
