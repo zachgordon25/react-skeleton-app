@@ -3,7 +3,9 @@ import React from 'react';
 function Result({ filename, imageData }) {
   return (
     <div>
-      <h1>Image uploaded and processed</h1>
+      <p style={{ backgroundColor: 'rgba(0, 0, 0, 0.60)', padding: '10px' }}>
+        <h1 style={{ textShadow: '2px 2px black' }}>Image uploaded and processed</h1>
+      </p>
       <img
         src={`data:image/png;base64,${imageData}`}
         alt="Skeleton"
